@@ -4,8 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
 </head>
 <body>
-    <h1>Welcome user, you are logged in !!!</h1>
+    <div id="container" class="flex">
+        <div class="left">
+            <div id="profileGolu" >
+                <img id="pic" src="" alt=""class="ml-10 mt-12 border border-black h-[280px] w-[280px] rounded-full">
+            </div>
+        </div>
+        
+        
+        <div  class="right border border-black h-[180px] w-[280px]">
+            <h1 class="text-lg font-serif font-semibold">Username:</h1>
+        <div id="about">
+        </div>
+    </div>
+    </div>
+    <script>
+        const data = JSON.parse(sessionStorage.getItem('user'));
+        const golu = document.getElementById('pic');
+        if(data){
+            console.log(data);
+            console.log(data.data.user.fullname);
+            console.log( data.data.user.username);
+            golu.src = data.data.user.avatar;
+            document.getElementById('about').textContent = data.data.user.username;
+        }
+        else{
+            console.log("user data not found");
+        }
+        
+    </script>
 </body>
 </html>
