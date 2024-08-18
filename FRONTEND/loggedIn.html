@@ -7,18 +7,20 @@
     <link rel="stylesheet" href="./output.css">
 </head>
 <body>
-    <div id="container" class="flex">
-        <div class="left">
+    <div id="container" class=" ">
+        <div class="left flex">
             <div id="profileGolu" >
-                <img id="pic" src="" alt=""class="ml-10 mt-12 border border-black h-[280px] w-[280px] rounded-full">
+                <img id="pic" src="" alt=""class="ml-10 mt-12 h-[280px] w-[280px] rounded-full ">
+            </div>
+            <div id="file">
+                  <img src="" alt="" id="qr" class="ml-10 mt-12 border border-black h-[280px] w-[280px] ">
             </div>
         </div>
         
         
-        <div  class="right border border-black h-[180px] w-[280px]">
-            <h1 class="text-lg font-serif font-semibold">Username:</h1>
-        <div id="about">
-        </div>
+        <div  class="right  h-[80px] w-[280px] ml-[68px] mt-[20px] p-4">
+            <h1 class="text-lg font-serif font-semibold inline">Username:</h1>
+            <span id="about" class="font-serif font-semibold"></span>
     </div>
     </div>
     <script>
@@ -28,8 +30,10 @@
             console.log(data);
             console.log(data.data.user.fullname);
             console.log( data.data.user.username);
+            console.log( data.data.user.file[0]);
             golu.src = data.data.user.avatar;
-            document.getElementById('about').textContent = data.data.user.username;
+            document.getElementById('about').textContent = data.data.user.fullname;
+            document.getElementById('qr').src = data.data.user.file[0];
         }
         else{
             console.log("user data not found");
