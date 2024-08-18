@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./output.css">
+    
+</head>
+<body class="bg-[url('/residential-8278516_1280.jpg')] bg-cover bg-center z-0 opacity-70]">
+    <div id="container" >
+        <nav id="" class="sticky">
+            <ul class="flex  p-4 bg-[#3554d1] text-white text-base font-mono font-semibold space-x-7 ">
+                <li class="cursor-pointer hover:bg-green-500 hover:px-2 hover:text-lg rounded-md">Home</li>
+                <li class="cursor-pointer hover:bg-green-500 hover:px-2 hover:text-lg rounded-md">Hostel</li>
+                <li class="cursor-pointer hover:bg-green-500 hover:px-2 hover:text-lg rounded-md">Students</li>
+                
+            </ul>
+        </nav>
+    </div>   
+    <div class="section flex justify-center items-center border-black h-[510px] mt-5 ">
+        <div class="mainB ">
+            <div class="h-[500px] w-[500px] border border-gray-300 pt-3 bg-white bg-opacity-50 p-8 rounded-lg shadow-lg max-w-sm ">
+                <div id="" class="flex justify-center text-2xl font-mono font-medium mb-8">
+                    <h1>Login to your account</h2>
+                </div>
+                <div class="flex justify-center ">
+                    <form id="loginForm" >
+                        <label for="username" class="block  text-lg font-mono font-medium ">Username or Email:</label>
+                        <input type="text" id="username" name="username" class="my-3  text-base  bg-white bg-opacity-75 text-gray-900 border border-gray-300 rounded w-full py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-opacity-100"required><br><br>
+            
+                        <label for="password" class="block  text-lg font-mono font-medium">Password:</label>
+                        <input type="password" id="password" name="password" class="my-3  text-base  bg-white bg-opacity-75 text-gray-900 border border-gray-300 rounded w-[300px] py-2 px-3 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-opacity-100"required><br><br>
+            
+                        
+                    </form>
+                </div>
+               <div class="flex justify-center text-lg"><button id="btn" class="w-[300px] my-3 border border-[#3554d1] text-lg font-mono font-medium text-white rounded-lg py-1 px-3 bg-[#3554d1]">login</button></div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('btn').addEventListener('click',async function () {
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const loginData ={
+                    username:username,
+                    email:username,
+                    password:password
+                }
+                try {
+                    const response = await fetch('http://localhost:8000/api/v1/user/login',{
+                        method:'POST',
+                        headers:{
+                            'Content-Type':'application/json'
+                        },
+                        body:JSON.stringify(loginData)
+                    })
+                    const result = await response.json()
+                    window.location.href='loggedIn.html';
+                    console.log(result);
+                } catch (error) {
+                    console.error('Error',error);
+                    alert('An error occured while loggin in')
+                }
+        })
+    </script>
+</body>
+</html>

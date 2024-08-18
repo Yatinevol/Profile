@@ -1,0 +1,14 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "This is frontend project",
+  "main": "index.js",
+  "scripts": {
+    "build":"npx tailwindcss -i ./input.css -o ./output.css --watch"
+  },
+  "author": "yatin singh",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.10"
+  }
+}

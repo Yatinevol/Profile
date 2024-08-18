@@ -1,0 +1,39 @@
+<script>
+document.getElementById('submitBtn').addEventListener('click', async function() {
+    // Extract the data from the form
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+
+    // Prepare the data to send to the backend
+    const loginData = {
+        username: username,
+        password: password
+    };
+
+    try {
+        // Send the data to the backend using fetch
+        const response = await fetch('/api/login', { // Replace '/api/login' with your actual backend URL
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(loginData)
+        });
+
+        // Parse the JSON response
+        const result = await response.json();
+
+        // Check if login is successful
+        if (result.success) {
+            // If the user exists and login is successful, redirect to the logged-in page
+            window.location.href = '/dashboard'; // Replace '/dashboard' with your logged-in page URL
+        } else {
+            // Handle login failure (e.g., show an error message)
+            alert('Login failed: ' + result.message);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        alert('An error occurred. Please try again.');
+    }
+});
+</script>
